@@ -1,0 +1,32 @@
+{
+  "name": "koa-beatrix",
+  "version": "1.0.0",
+  "description": "Koa middleware to handle requests in a RabbitMQ/beatrix queue",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/richthegeek/koa-beatrix.git"
+  },
+  "keywords": [
+    "koa",
+    "rabbitmq"
+  ],
+  "author": "Richard Lyon",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/richthegeek/koa-beatrix/issues"
+  },
+  "homepage": "https://github.com/richthegeek/koa-beatrix#readme",
+  "dependencies": {
+    "lodash": "^4.17.11",
+    "mock-req": "^0.2.0",
+    "mock-res": "^0.5.0"
+  },
+  "peerDependencies": {
+    "beatrix": "^3.4.0",
+    "koa": "^2.6.2"
+  }
+}
