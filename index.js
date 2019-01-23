@@ -30,7 +30,7 @@ const KoaBeatrix = function (app, options) {
 
   if (app.context.beatrix) {
     self.beatrix = app.context.beatrix;
-  } else if (_.has(options.beatrix, 'assertQueue')) {
+  } else if (_.get(options.beatrix, 'assertQueue')) {
     self.beatrix = options.beatrix;
   } else if (_.has(options, 'beatrix')) {
     self.beatrix = Beatrix(options.beatrix)
