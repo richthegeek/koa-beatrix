@@ -10,10 +10,9 @@ const KoaBeatrix = function (app, options) {
   }
 
   _.defaults(self.options, {
-    beatrix: {},
     prefix: '',
     nameFromPath: false,
-    process: getJobProcessor(app),
+    process: getJobProcessor(app.callback()),
     onSuccess: (ctx, result) => {
       ctx.status = Number(_.get(result, 'status', 200));
       _.forEach(result.headers, (val, key) => ctx.set(key, val))
@@ -24,7 +23,7 @@ const KoaBeatrix = function (app, options) {
     },
     onError: (ctx, err) => {
       ctx.status = _.get(err, 'status', 500);
-      ctx.body = _.get(err, 'message', err);
+      return ctx.body = _.get(err, 'message', err);
     }
   })
 
@@ -99,7 +98,7 @@ const KoaBeatrix = function (app, options) {
   }
 }
 
-const getJobProcessor = (app) => {
+const getJobProcessor = (callback) => {
   return async (job) => {
     let req = new Request();
     let res = new Response();
@@ -114,7 +113,7 @@ const getJobProcessor = (app) => {
     req.fromBeatrix = job.body.state;
 
     try {
-      await app.callback()(req, res)
+      await callback(req, res);
 
       // ctx.onerror catches errors, so break out here
       if (req.jobRunError) {
