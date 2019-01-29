@@ -71,7 +71,8 @@ const KoaBeatrix = function (app, options) {
         'headers','body', 'query', 'params'
       ]);
       req.socket = {encrypted: ctx.socket.encrypted}; // required for Koa to not bork
-      req.state = ctx.state;
+      req.state = ctx.state; // todo: allow customisation of copied fields
+      req.body = ctx.request.body || ctx.req.body; // todo: allow specific path for body
 
       if (config.nameFromPath === true) {
         let queueName = [self.options.prefix]

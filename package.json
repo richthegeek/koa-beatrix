@@ -1,6 +1,6 @@
 {
   "name": "koa-beatrix",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Koa middleware to handle requests in a RabbitMQ/beatrix queue",
   "main": "index.js",
   "scripts": {
